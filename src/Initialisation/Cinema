@@ -2,7 +2,7 @@ package Initialisation;
 
 import java.io.Serializable;
 
-/*
+/**
  * Represents a cinema in the cineplex
  * Contains information of name of this cinema,
  * cinema code of this cinema, and
