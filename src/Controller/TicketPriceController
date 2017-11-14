@@ -1,0 +1,155 @@
+package Controller;
+
+import java.text.DecimalFormat;
+import java.util.*;
+
+import DataHandler.DataHandler;
+import Initialisation.TicketPrice;
+
+public class TicketPriceController {
+	
+	private static final String FILEPATH = DataHandler.TPPATH;
+
+	public static Scanner sc = new Scanner(System.in);
+	public static DecimalFormat df = new DecimalFormat("0.00");
+	public static List<TicketPrice> ticketList = new ArrayList<TicketPrice>();
+	//public TicketPrice(String movieType, int userAge, String day, double price, String cinemaType, String before6)
+	
+
+	
+	
+	public TicketPriceController(){
+		
+	}
+		public void init()
+	{	//check the before6 first then the userType
+		ticketList.add(new TicketPrice("2d","student","mon-fri",7,"normal","yes")); //1
+		
+		ticketList.add(new TicketPrice("2d","senior","mon-fri",4 ,"normal", "yes")); //2
+		
+		ticketList.add(new TicketPrice("2d","general","mon-wed",8.5 ,"normal", "all")); //3
+		ticketList.add(new TicketPrice("2d","general","thurs",9.5 ,"normal", "all")); //4
+		ticketList.add(new TicketPrice("2d","general","fri",9.5 ,"normal", "yes")); //5
+		ticketList.add(new TicketPrice("2d","general","fri",11 ,"normal", "no")); //6
+		ticketList.add(new TicketPrice("2d","general","sat-sun/ph",11 ,"normal", "all")); //7
+		
+		ticketList.add(new TicketPrice("2d","general","mon-thurs",28 ,"platinium", "all")); //8
+
+		ticketList.add(new TicketPrice("2d","general","fri-sun/ph",38 ,"platinium", "all")); //9
+		
+		ticketList.add(new TicketPrice("3d","student","mon-fri",9 ,"normal", "yes")); //10
+		
+		ticketList.add(new TicketPrice("3d","general","mon-thurs",11 ,"normal", "all")); //11
+		ticketList.add(new TicketPrice("3d","general","fri-sun/ph",15 ,"normal", "all")); //12
+	
+		DataHandler.writeFilePath(ticketList, FILEPATH);
+	}
+		
+		public void generalStudent(){
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Current price: " + df.format(ticketList.get(0).getPrice()));
+			System.out.println("Enter the new price: ");
+			double price = sc.nextDouble();
+			ticketList.get(0).setPrice(price);
+			DataHandler.writeFilePath(ticketList, FILEPATH);
+		}
+		
+		public void generalSenior(){
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Current price: " + df.format(ticketList.get(1).getPrice()));
+			System.out.println("Enter the new price: ");
+			double price = sc.nextDouble();
+			ticketList.get(1).setPrice(price);
+			DataHandler.writeFilePath(ticketList, FILEPATH);
+		}
+		
+		public void generalMonWed(){
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Current price: " + df.format(ticketList.get(2).getPrice()));
+			System.out.println("Enter the new price: ");
+			double price = sc.nextDouble();
+			ticketList.get(2).setPrice(price);
+			DataHandler.writeFilePath(ticketList, FILEPATH);
+		}
+		
+		public void generalThurs(){
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Current price: " + df.format(ticketList.get(3).getPrice()));
+			System.out.println("Enter the new price: ");
+			double price = sc.nextDouble();
+			ticketList.get(3).setPrice(price);
+			DataHandler.writeFilePath(ticketList, FILEPATH);
+		}
+		
+		public void generalFriB6(){
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Current price: " + df.format(ticketList.get(4).getPrice()));
+			System.out.println("Enter the new price: ");
+			double price = sc.nextDouble();
+			ticketList.get(4).setPrice(price);
+			DataHandler.writeFilePath(ticketList, FILEPATH);
+		}
+		
+		public void generalFriA6(){
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Current price: " + df.format(ticketList.get(5).getPrice()));
+			System.out.println("Enter the new price: ");
+			double price = sc.nextDouble();
+			ticketList.get(5).setPrice(price);
+			DataHandler.writeFilePath(ticketList, FILEPATH);
+		}
+		
+		public void generalSatSunPh(){
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Current price: " + df.format(ticketList.get(6).getPrice()));
+			System.out.println("Enter the new price: ");
+			double price = sc.nextDouble();
+			ticketList.get(6).setPrice(price);
+			DataHandler.writeFilePath(ticketList, FILEPATH);
+		}
+		
+		public void generalPlatMonThurs(){
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Current price: " + df.format(ticketList.get(7).getPrice()));
+			System.out.println("Enter the new price: ");
+			double price = sc.nextDouble();
+			ticketList.get(7).setPrice(price);
+			DataHandler.writeFilePath(ticketList, FILEPATH);
+		}
+		
+		public void generalPlatFriSunPh(){
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Current price: " + df.format(ticketList.get(8).getPrice()));
+			System.out.println("Enter the new price: ");
+			double price = sc.nextDouble();
+			ticketList.get(8).setPrice(price);
+			DataHandler.writeFilePath(ticketList, FILEPATH);
+		}
+		
+		public void threeDStudent(){
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Current price: " + df.format(ticketList.get(9).getPrice()));
+			System.out.println("Enter the new price: ");
+			double price = sc.nextDouble();
+			ticketList.get(9).setPrice(price);
+			DataHandler.writeFilePath(ticketList, FILEPATH);
+		}
+		
+		public void threeDMonThurs(){
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Current price: " + df.format(ticketList.get(10).getPrice()));
+			System.out.println("Enter the new price: ");
+			double price = sc.nextDouble();
+			ticketList.get(10).setPrice(price);
+			DataHandler.writeFilePath(ticketList, FILEPATH);
+		}
+		
+		public void threeDOthers(){
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Current price: " + df.format(ticketList.get(11).getPrice()));
+			System.out.println("Enter the new price: ");
+			double price = sc.nextDouble();
+			ticketList.get(11).setPrice(price);
+			DataHandler.writeFilePath(ticketList, FILEPATH);
+		}
+}
