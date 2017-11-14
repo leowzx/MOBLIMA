@@ -1,0 +1,54 @@
+package Controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import Initialisation.PhInitialisation; 
+import DataHandler.DataHandler;
+
+public class PublicHolidayController {
+
+	private static final String FILEPATH = DataHandler.PHPATH;
+	public static Scanner sc = new Scanner(System.in);
+	//ph.writeFilePath(ticketList, FILEPATH);
+	public List<PhInitialisation> phList = new ArrayList<PhInitialisation>();
+	private String phName, phDate;
+	private int i,j,k;
+	
+	public PublicHolidayController() {
+	        
+		}
+	
+	public void print()
+	{
+		phList = DataHandler.readFilePath(FILEPATH);
+		for(int j = 0; j < phList.size();  j++)
+		{
+			System.out.println("ID: " + (j+1) + "      " + "Name: " + phList.get(j).getPhName() + 
+							"      " + "Date: " + phList.get(j).getPhDate());
+		}
+	}
+	public void createPh(){
+		
+		i = phList.size() + 1;
+		System.out.println();
+		System.out.println("ID:	" + i);
+		System.out.println("Enter the name of public holiday:	");
+		phName = sc.next();
+		System.out.println("Enter the date of public holiday (DD-MM-YYYY)	:");
+		phDate = sc.next();
+		
+		phList.add(new PhInitialisation( phName , phDate));
+		DataHandler.writeFilePath(phList, FILEPATH);
+
+	}
+	
+	public void removePh(){
+		
+		System.out.println("Please enter the ID for the public holiday to be removed: ");
+		k = sc.nextInt();
+		phList.remove(k-1);
+		DataHandler.writeFilePath(phList, FILEPATH);
+	}
+}
+
