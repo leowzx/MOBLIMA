@@ -1,0 +1,50 @@
+package UI;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import Controller.PublicHolidayController;
+import Initialisation.PhInitialisation;
+import DataHandler.DataHandler;
+public class PublicHolidayUI {
+
+	public static Scanner sc = new Scanner(System.in);
+	
+	private static final String FILEPATH = DataHandler.PHPATH;
+	public static List<PhInitialisation> phList = new ArrayList<PhInitialisation>();
+	
+	public static void addHoliday() {
+		//System.out.println("");
+		int choice;
+		PublicHolidayController ph = new PublicHolidayController();
+		
+		do{
+			System.out.println();
+			System.out.println("Public Holiday Configuration");
+			System.out.println("============================");
+			System.out.println();
+			System.out.println("Current List Of Public Holiday: ");
+			ph.print();
+			System.out.println();
+			System.out.println("Please state what you would like to do: ");
+			System.out.println("1:	Create New Public Holiday");
+			System.out.println("2:	Remove Public Holiday");
+			System.out.println("3:	Back");
+
+			choice = sc.nextInt();
+		
+			switch(choice){
+			
+			case 1: ph.createPh();
+					break;
+					
+			case 2: ph.removePh();
+			
+					break;
+			case 3: break;
+		
+			}
+		} while(choice < 4 && choice > 0);
+
+	}
+}
