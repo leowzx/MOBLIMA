@@ -1,0 +1,185 @@
+package UI;
+
+import java.text.DecimalFormat;
+import java.util.*;
+import Initialisation.TicketPrice;
+import DataHandler.DataHandler;
+import Controller.TicketPriceController;
+
+public class TicketPriceUI {
+	
+	
+	public static Scanner sc = new Scanner(System.in);
+	
+	private static final String FILEPATH = DataHandler.TPPATH;
+	public static List<TicketPrice> ticketList = new ArrayList<TicketPrice>();
+	public static TicketPriceController tp = new TicketPriceController();
+	public static DecimalFormat df = new DecimalFormat("0.00");
+	
+	public static void changeTicketPrice() {
+	
+		int choice, choice1 = 0, choice2;
+		do{
+			//tp.init();
+			ticketList = DataHandler.readFilePath(FILEPATH);
+			System.out.println("Ticket Price Configuration");
+			System.out.println("==========================");
+			System.out.println();
+			System.out.println("1. General Price");
+			System.out.println("----------------"); 
+			System.out.println("Students Weekday (before 6pm):				" + "$" + df.format(ticketList.get(0).getPrice()));
+			System.out.println("Senior Citizens Weekday (before 6pm):			" + "$" + df.format(ticketList.get(1).getPrice())); 
+			System.out.println("Monday - Wednesday:					" + "$" + df.format(ticketList.get(2).getPrice()));
+			System.out.println("Thursday:						" + "$" + df.format(ticketList.get(3).getPrice()));
+			System.out.println("Friday (before 6pm):					" + "$" + df.format(ticketList.get(4).getPrice()));
+			System.out.println("Friday (from 6pm):					" + "$" + df.format(ticketList.get(5).getPrice()));
+			System.out.println("Weekends, PH & PH Eve:					" + "$" + df.format(ticketList.get(6).getPrice()));
+			System.out.println("Platinium Movie Suite (Mon-Thurs):			" + "$" + df.format(ticketList.get(7).getPrice()));
+			System.out.println("Platinium Movie Suite (Fri-Sun, PH & PH Eve):		" + "$" + df.format(ticketList.get(8).getPrice()));
+			System.out.println();
+			System.out.println("2. 3D Movie Price");
+			System.out.println("-----------------");
+			System.out.println("Students Weekday (before 6pm)				" + "$" + df.format(ticketList.get(9).getPrice()));
+			System.out.println("Monday - Thursday:					" + "$" + df.format(ticketList.get(10).getPrice()));
+			System.out.println("Friday, Weekends, PH & PH Eve:				" + "$" + df.format(ticketList.get(11).getPrice()));
+			System.out.println();
+			System.out.println("Please select an option to change the price");
+		
+			choice = sc.nextInt();
+			
+			switch(choice){
+			
+				case 1: //do{
+						//ticketList = tpdh.readFilePath(FILEPATH);
+						System.out.println();
+						System.out.println("General Price");
+						System.out.println("-------------");
+						System.out.println(" 1. Students Weekday (before 6pm):			" + "$" + df.format(ticketList.get(0).getPrice()));
+						System.out.println(" 2. Senior Citizens Weekday (before 6pm):		" + "$" + df.format(ticketList.get(1).getPrice()));
+						System.out.println(" 3. Monday - Wednesday:					" + "$" + df.format(ticketList.get(2).getPrice()));
+						System.out.println(" 4. Thursday:						" + "$" + df.format(ticketList.get(3).getPrice()));
+						System.out.println(" 5. Friday (before 6pm):					" + "$" + df.format(ticketList.get(4).getPrice()));
+						System.out.println(" 6. Friday (from 6pm):					" + "$" + df.format(ticketList.get(5).getPrice()));
+						System.out.println(" 7. Weekends, PH & PH Eve:				" + "$" + df.format(ticketList.get(6).getPrice()));
+						System.out.println(" 8. Platinium Movie Suite (Mon-Thurs):			" + "$" + df.format(ticketList.get(7).getPrice()));
+						System.out.println(" 9. Platinium Movie Suite (Fri-Sun, PH & PH Eve):	" + "$" + df.format(ticketList.get(8).getPrice()));
+						System.out.println("10. Back");
+						System.out.println();
+						System.out.println("Please select the ticket price that you want to change (-1 to go back)");
+						
+						choice1 = sc.nextInt();
+						
+						while (choice1>0 || choice1<10){
+						
+						if (choice1 == -1)
+							break;
+						
+						switch (choice1){
+							case 1: tp.generalStudent();
+									break;
+							case 2: tp.generalSenior();
+									break;
+							case 3: tp.generalMonWed();
+									break;
+							case 4: tp.generalThurs();
+									break;
+							case 5: tp.generalFriB6();
+									break;
+							case 6: tp.generalFriA6();
+									break;
+							case 7: tp.generalSatSunPh();
+									break;
+							case 8:	tp.generalPlatMonThurs();
+									break;
+							case 9: tp.generalPlatFriSunPh();
+									break;
+									
+							default: while (choice1<=0 || choice1>9){
+										 System.out.println("Invalid");
+										 System.out.println("Please select the ticket price that you want to change (-1 to go back)");
+										 choice1 = sc.nextInt();
+									 
+										 if (choice1 == -1)
+											 break;
+									 
+										 switch (choice1){
+										 	case 1: tp.generalStudent();
+										 			break;
+										 	case 2: tp.generalSenior();
+										 			break;
+										 	case 3: tp.generalMonWed();
+										 			break;
+										 	case 4: tp.generalThurs();
+										 			break;
+										 	case 5: tp.generalFriB6();
+										 			break;
+										 	case 6: tp.generalFriA6();
+										 			break;
+										 	case 7: tp.generalSatSunPh();
+										 			break;
+										 	case 8:	tp.generalPlatMonThurs();
+										 			break;
+										 	case 9: tp.generalPlatFriSunPh();
+										 			break;
+									 		}
+									 	}break;
+							}break;
+						}break;
+						
+				case 2: System.out.println("3D Movie Price");
+						System.out.println("--------------------");
+						System.out.println(" 1. Students Weekday (before 6pm)			" + "$" + df.format(ticketList.get(9).getPrice()));
+						System.out.println(" 2. Monday - Thursday:					" + "$" + df.format(ticketList.get(10).getPrice()));
+						System.out.println(" 3. Friday, Weekends, PH & PH Eve:			" + "$" + df.format(ticketList.get(11).getPrice()));
+						System.out.println(" 4. Back");
+						System.out.println();
+						System.out.printf("Please select the ticket price that you want to change (-1 to go back)");
+					
+						choice2 = sc.nextInt();
+						
+						while(choice2>0 || choice2<4){
+							
+							if (choice2 == -1)
+								break;
+							
+							switch(choice2){
+								case 1: tp.threeDStudent();
+										break;
+								case 2: tp.threeDMonThurs();
+										break;
+								case 3:	tp.threeDOthers();
+										break;
+							
+								default: while(choice2<=0 || choice2>3){
+											System.out.println();
+											System.out.println("Invalid choice! Please enter again.");	
+											System.out.println();
+											System.out.println("3D Movie Price");
+											System.out.println("--------------------");
+											System.out.println("1. Students Weekday (before 6pm)				" + "$" + df.format(ticketList.get(9).getPrice()));
+											System.out.println("2. Monday - Thursday:						" + "$" + df.format(ticketList.get(10).getPrice()));
+											System.out.println("3. Friday, Weekends, PH & PH Eve:				" + "$" + df.format(ticketList.get(11).getPrice()));
+											System.out.println();
+											System.out.println("Please select the ticket price that you want to change (-1 to go back)");
+									 
+											choice2 = sc.nextInt();
+									 	
+											if (choice2 == -1)
+												break;
+									 	
+											switch(choice2){
+												case 1: tp.threeDStudent();
+														break;
+												case 2: tp.threeDMonThurs();
+														break;
+												case 3:	tp.threeDOthers();
+														break;
+											}	
+										}break;
+								}break;
+							}break;
+				}
+			} while(choice<3 && choice>0);
+	}
+}
+
