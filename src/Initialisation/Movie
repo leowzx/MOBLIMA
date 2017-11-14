@@ -33,7 +33,12 @@ public class Movie implements Serializable{
 	private int runTime, salesCounter = 0;
 	
 	/**
-	 * 
+	 * Creates new movie with
+	 * @param title The title of this movie,
+	 * @param cast The cast of this movie,
+	 * @param director The director of this movie,
+	 * @param genre The genre of this movie,
+	 * @param releaseDate The release date of this movie
 	public Movie (String title, String cast, String director, String genre, String releaseDate, int runTime, 
 			String distributor, String language, String synopsis, String showStatus, String movieType) {
 				this.title = title;
