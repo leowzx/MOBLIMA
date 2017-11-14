@@ -1,0 +1,55 @@
+package UI;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+
+import Controller.AdminController;
+import Controller.MovieController;
+import Controller.ReviewController;
+import Initialisation.Movie;
+import Initialisation.Review;
+import DataHandler.DataHandler;
+import DataHandler.ReviewHandler;
+
+public class CinemaUI {
+	public static Scanner sc = new Scanner(System.in);
+	public static AdminController Admin = new AdminController();
+
+	public static void cinemaConfiguration() {
+		// TODO Auto-generated method stub
+		int input;
+		do{
+		
+			System.out.printf(""
+					+ "==========================\n"
+					+ "Cinema Configuration\n"
+					+ "=========================="
+					+ "\n"
+					+ " 1. List Cinema\n"
+					+ " 2. Create Cinema\n"
+					+ " 3. Back\n"
+					+ "\n"
+					+ "Please make a selection: ");		
+			input = sc.nextInt();
+			sc.nextLine();
+			System.out.println();
+		} while(!DataHandler.readInt(1, 4, input));
+		switch (input) {
+		case 1: 
+			Admin.displayCinemaList();	
+			cinemaConfiguration();
+				break;
+		case 2:
+		
+				break;
+		case 3:
+			MainConsole.adminMenu();
+		}
+	}
+	
+	
+	
+	
+}
+
