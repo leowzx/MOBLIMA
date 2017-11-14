@@ -1,8 +1,12 @@
 package Initialisation;
 
-
 import java.io.Serializable;
 
+/**
+ * represents information of a movie
+ * Contains title, ast, director, genre, release date, runtime, distributor,
+ * language, synopsis, show status, number of sales and movie type
+ */
 public class Movie implements Serializable{
 	private String title, cast, director, genre, releaseDate, distributor, language, synopsis, movieType, showStatus;
 	private int runTime, salesCounter = 0;
