@@ -1,0 +1,22 @@
+package Initialisation;
+
+import java.io.Serializable;
+
+public class Review implements Serializable{
+	private String content;
+	private double rating;
+	
+	//create review with given content & rating
+	public Review(String content, double rate) {
+		this.content = content;
+		this.rating = rate;
+	}
+
+	public String getContent() {
+		return content;
+	}
+	
+	public double getRating() {
+		return rating;
+	}
+}
