@@ -1,0 +1,53 @@
+package UI;
+
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.*;
+
+import Controller.MovieController;
+import Controller.ReviewController;
+import DataHandler.ReviewHandler;
+import DataHandler.DataHandler;
+import Initialisation.Movie;
+import Initialisation.Review;
+
+public class ReviewMain {
+
+	public static Scanner sc = new Scanner(System.in);
+	private static final String MOVIEFILEPATH = DataHandler.MOVIEPATH;
+	private static final String FILEPATH = ReviewHandler.FILEPATH;
+	public static HashMap<String, List<Review>> reviewsMap = new HashMap<String, List<Review>>();
+	public static ReviewController reviewc = new ReviewController();
+	
+	
+	
+	public static void addReview(String movie_name) {
+		reviewsMap = ReviewHandler.readFilePath(FILEPATH);
+		double rate;
+		String review;
+		do {
+			System.out.printf(""
+					+ "==========================\n" 
+					+ "Add Review\n" 
+					+"==========================\n"
+					+ "\n");
+			System.out.print("Give a rating between 1 and 5 : ");
+			rate = sc.nextDouble();
+			sc.nextLine();
+		} while (rate < 1.0 || rate > 5.0);
+		System.out.print("Give your review: ");
+		review = sc.nextLine();
+		Review review_new = new Review(review, rate);
+		if (reviewsMap.get(movie_name) == null) {
+			List<Review> movieList = new ArrayList<Review>();
+			reviewsMap.put(movie_name, movieList);
+		}
+		reviewsMap.get(movie_name).add(review_new);
+		ReviewHandler.writeFilePath(reviewsMap, FILEPATH);
+		System.out.println("\nReview added!\n");
+		
+	}
+	
+
+
+}
