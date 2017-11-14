@@ -1,0 +1,61 @@
+package Controller;
+
+import java.io.IOException;
+import java.io.Writer;
+import java.text.DecimalFormat;
+import java.util.*;
+
+import DataHandler.ReviewHandler;
+import Initialisation.Review;
+import UI.MovieUI;
+
+public class ReviewController {
+	private static final String FILEPATH = "review.txt";
+
+	public static Scanner sc = new Scanner(System.in);
+	public static ReviewHandler reviewh = new ReviewHandler();
+	public static List<Review> reviewList = new ArrayList<Review>();
+	public static HashMap<String, List<Review>> reviewsMap = ReviewHandler.readFilePath(FILEPATH);	
+	
+	public ReviewController(){
+		
+	}
+    
+    public static void printAllReview(String movie_name) {
+    	reviewsMap = ReviewHandler.readFilePath(FILEPATH);
+    	System.out.printf(""
+				+ "==========================\n" 
+				+ "Reviews\n" 
+				+ "==========================\n"
+				+ "\n");
+    	try {
+    	int size = reviewsMap.get(movie_name).size();
+    	for (int temp = 0; temp < size; temp++) {
+    		System.out.printf("Rating: %.2f\n", reviewsMap.get(movie_name).get(temp).getRating());
+    		System.out.printf("Review: ");
+    		MovieUI.justifyText(reviewsMap.get(movie_name).get(temp).getContent());
+    		System.out.println();
+    		}
+    	}catch(NullPointerException n) {
+			System.out.printf("%s currently has no reviews.\n", movie_name);
+			System.out.println();
+    	}
+    }
+		
+	public List<Review> getReview(String movie_name) {
+		return reviewsMap.get(movie_name);
+	}
+	
+	public String getReviewD(String movie_name) {
+
+		int i = reviewsMap.get(movie_name).size();
+		return (reviewsMap.get(movie_name)).get(i-1).getContent();
+	}
+		
+	public double getRating(String movie_name) {
+		int i = reviewsMap.get(movie_name).size();
+		System.out.println("\nYour rating is: ");
+		return (reviewsMap.get(movie_name)).get(i-1).getRating();
+	}
+}
+
