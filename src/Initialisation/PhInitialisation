@@ -1,0 +1,33 @@
+package Initialisation;
+
+import java.io.Serializable;
+
+public class PhInitialisation implements Serializable{
+	private String phName, phDate;
+	public PhInitialisation(){}
+	
+	public PhInitialisation(String phName, String phDate){
+		this.phName = phName;
+		this.phDate = phDate;
+	}
+
+
+	public String getPhName() {
+		return phName;
+	}
+
+	public void setPhName(String phName) {
+		this.phName = phName;
+	}
+
+	public String getPhDate() {
+		return phDate;
+	}
+
+	public void setPhDate(String phDate) {
+		this.phDate = phDate;
+	}
+
+	
+	
+}
