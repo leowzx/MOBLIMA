@@ -1,0 +1,64 @@
+package UI;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import Controller.AdminController;
+import Controller.CineplexController;
+import DataHandler.DataHandler;
+import Initialisation.Cineplex;
+import Initialisation.Movie;
+
+public class CineplexUI {
+	public static Scanner sc = new Scanner(System.in);
+	public static AdminController Admin = new AdminController();
+	public static CineplexController cControl = new CineplexController();
+	public static void cineplexConfiguration() {
+		// TODO Auto-generated method stub
+		int input;
+		do{
+			//tp.init();
+			System.out.printf(""
+					+ "==========================\n"
+					+ "Movie Configuration\n"
+					+ "=========================="
+					+ "\n"
+					+ " 1. List Cineplex\n"
+					+ " 2. Show Movies in Cineplex\n"
+					+ " 3. Add Movies to Cineplex\n"
+					+ " 4. Create Cineplex\n"
+					+ " 5. Back\n"
+					+ "\n"
+					+ "Please make a selection: ");
+			
+			input = sc.nextInt();
+			sc.nextLine();
+			System.out.println();
+		} while(!DataHandler.readInt(1, 4, input));
+		switch (input) {
+		case 1: 
+				Admin.displayCineplexList();
+				cineplexConfiguration();
+				break;
+		case 2:
+			//StaffController staffControl = new StaffController();
+			//CineplexController cineplexController = new CineplexController();
+			Cineplex cineplexUserChoice = cControl.listCineplex();
+			Admin.listMovieSpecificToCinplex(cineplexUserChoice);
+			cineplexConfiguration();
+			//staffMenuCineplex();
+			
+				break;
+		case 3:
+			Admin.addMovieToCineplex();
+				break;
+		case 4: 
+				break;
+		case 5:
+				MainConsole.adminMenu();
+		}
+	}
+
+
+}
