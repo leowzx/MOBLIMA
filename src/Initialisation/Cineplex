@@ -14,6 +14,7 @@ import Initialisation.ShowTime;
  * location of the cineplex,
  * a list of cinema of the cineplex, and
  * a list of movies of the cineplex
+ * @author SS3 Team 8
  */
  
 public class Cineplex implements Serializable {
