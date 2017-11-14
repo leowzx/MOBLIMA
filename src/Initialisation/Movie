@@ -8,6 +8,7 @@ import java.io.Serializable;
  * language, synopsis, show status, number of sales and movie type
  * @author SS3 Team 8
  */
+ 
 public class Movie implements Serializable{
 
 	/**
@@ -34,11 +35,14 @@ public class Movie implements Serializable{
 	
 	/**
 	 * Creates new movie with
-	 * @param title The title of this movie,
-	 * @param cast The cast of this movie,
-	 * @param director The director of this movie,
-	 * @param genre The genre of this movie,
+	 * @param title The title of this movie
+	 * @param cast The cast of this movie
+	 * @param director The director of this movie
+	 * @param genre The genre of this movie
 	 * @param releaseDate The release date of this movie
+	 * @param runTime The runtime of this movie
+	 * @param
+	 
 	public Movie (String title, String cast, String director, String genre, String releaseDate, int runTime, 
 			String distributor, String language, String synopsis, String showStatus, String movieType) {
 				this.title = title;
