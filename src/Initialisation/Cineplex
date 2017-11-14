@@ -8,7 +8,7 @@ import Initialisation.Movie;
 import Initialisation.ShowTime;
 
 /**
- * Represents a cineplex in the MOBLIMA system
+ * Represents a cineplex in MOBLIMA
  * Contains name of cineplex,
  * cineplex ID of the cineplex,
  * location of the cineplex,
