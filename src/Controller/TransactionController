@@ -1,0 +1,23 @@
+package Controller;
+
+import java.util.ArrayList;
+
+import DataHandler.DataHandler;
+import Initialisation.Transaction;
+
+public class TransactionController {
+	private static final String FILEPATH = DataHandler.TPATH;
+	public static ArrayList<Transaction> TList = new ArrayList<Transaction>();
+	public static void init(){
+		
+		TList.add(new Transaction ());
+		DataHandler.writeFilePath(TList, FILEPATH);
+	}
+	public static void main(String[] args) {
+		init();
+		// TODO Auto-generated method stub
+		//initSeat();
+		//initShowT();
+		//printSeats();
+	}
+}
