@@ -1,0 +1,85 @@
+package Controller;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import DataHandler.DataHandler;
+import Initialisation.Cinema;
+import Initialisation.Movie;
+import Initialisation.Seat;
+import Initialisation.ShowTime;
+import Initialisation.Ticket;
+
+
+
+public class ShowTimeController {
+	/*private HashMap<Date, List<ShowTime>> allShowTimes = new HashMap<Date, List<ShowTime>>();
+	private static final String FILEPATH = DataHandler.MOVIEPATH;
+	private List<ShowTime> oneDayShowTime = new ArrayList<ShowTime>();*/
+	public static ShowTime showtime;
+	public static ArrayList<ShowTime> ShowTList = new ArrayList<ShowTime>();
+	public static ArrayList<Seat> Temp = new ArrayList<Seat>();
+	public static final String row[] = {"A" , "B" , "C" , "D", "E"};
+	public static int ticketId;
+	private static final String FILEPATH = DataHandler.STPATH;
+	public static void initShowT(){
+		
+		/*ArrayList<Seat> seats = new ArrayList<Seat>();
+		for (int i = 0 ; i < row.length; i++)
+		{
+			for(int a = 0 ; a< row.length; a++)
+			{
+				Ticket ticket = new Ticket();
+				ticketId++;
+				ticket.setTicketId(ticketId);
+				seats.add(new Seat(row[i], a+1 ,ticket));
+				
+			}
+		}*/
+		ShowTList.add(new ShowTime (0,"1300","Mon","20/11/2017","Secret Superstar", "JEA", null));
+		DataHandler.writeFilePath(ShowTList, FILEPATH);
+		//int showTimeId, String time, String day, String date, List<Seat> seats
+	}
+	
+	public static void printSeats(){
+	
+		for(int i=0; i<ShowTList.size(); i++){
+			Temp = (ArrayList<Seat>) ShowTList.get(i).getSeats();
+			for(int j=0; j<Temp.size(); j++){
+				
+				if (Temp.get(j).isAvailability()){
+					System.out.print("[X]	");
+				}
+				else{
+				System.out.print("[" + Temp.get(j).getRow() + Temp.get(j).getColumn() + "]	");
+				}
+				if (Temp.get(j).getRow() == "E")
+					System.out.println();
+			}
+	}
+	
+}public List<ShowTime> retrieveShowTimeList(List<ShowTime> stList, String movieTitle) {
+	List<ShowTime> tempList = DataHandler.readFilePath(FILEPATH);
+	List<ShowTime> showTimeList = new ArrayList<ShowTime>();
+	if(tempList == null)
+		tempList = new ArrayList<ShowTime>();
+	for(ShowTime st : tempList){
+		for(ShowTime showtime : stList){
+			if(showtime.getShowTimeId() == st.getShowTimeId() && st.getMovieTitle().equals(movieTitle)){
+				showTimeList.add(st);
+			}
+		}
+	}
+	return showTimeList;
+}
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//initSeat();
+		initShowT();
+		printSeats();
+	}
+}
