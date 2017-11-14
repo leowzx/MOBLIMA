@@ -1,0 +1,185 @@
+package Initialisation;
+
+import java.io.Serializable;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Date;
+public class ShowTime implements Serializable{
+	private static final long serialVersionUID = -537338478707341585L;
+	private int showTimeId;
+	private String time, day, date, movieTitle, cinemaCode;
+	private List<Seat> seats;
+	public static int ticketId;
+	private static final String row[] = {"A" , "B" , "C" , "D", "E"};
+	
+	public ShowTime(){
+		seats = new ArrayList<Seat>();
+		for(int i=1; i<5; i++){
+			Ticket ticket = new Ticket();
+			ticketId++;
+			ticket.setTicketId(ticketId);
+			seats.add(new Seat("A", i, ticket));
+			ticket = new Ticket();
+			ticketId++;
+			ticket.setTicketId(ticketId);
+			seats.add(new Seat("B",i, ticket));
+			ticket = new Ticket();
+			ticketId++;
+			ticket.setTicketId(ticketId);
+			seats.add(new Seat("C", i,ticket));
+			ticket = new Ticket();
+			ticketId++;
+			ticket.setTicketId(ticketId);
+			seats.add(new Seat("D", i, ticket));
+			ticket = new Ticket();
+			ticketId++;
+			ticket.setTicketId(ticketId);
+			seats.add(new Seat("E", i, ticket));
+		}
+	}
+	
+	public ShowTime (int showTimeId, String time, String day,
+	String date,String movieTitle,String cinemaCode, List<Seat> seats) {
+		this.showTimeId = showTimeId;
+		this.time = time;
+		this.day = day;
+		this.movieTitle = movieTitle;
+		this.cinemaCode=cinemaCode;
+		this.date = date;
+		if(seats == null){
+			seats = new ArrayList<Seat>();
+			/*for (int i = 0 ; i < row.length; i++)
+			{
+				for(int a = 0 ; a< row.length; a++)
+				{
+					Ticket ticket = new Ticket();
+					ticketId++;
+					ticket.setTicketId(ticketId);
+					seats.add(new Seat(row[i], a+1 ,ticket));
+					
+				}
+			}*/
+			for(int i=1; i<5; i++){
+				Ticket ticket = new Ticket();
+				ticketId++;
+				ticket.setTicketId(ticketId);
+				seats.add(new Seat("A", i, ticket));
+				ticket = new Ticket();
+				ticketId++;
+				ticket.setTicketId(ticketId);
+				seats.add(new Seat("B",i, ticket));
+				ticket = new Ticket();
+				ticketId++;
+				ticket.setTicketId(ticketId);
+				seats.add(new Seat("C", i,ticket));
+				ticket = new Ticket();
+				ticketId++;
+				ticket.setTicketId(ticketId);
+				seats.add(new Seat("D", i, ticket));
+				ticket = new Ticket();
+				ticketId++;
+				ticket.setTicketId(ticketId);
+				seats.add(new Seat("E", i, ticket));
+			this.seats =seats;
+		}
+		}
+			else {
+				this.seats = seats;
+				}
+				
+		}
+	
+			
+		/*for(int i=0; i<5; i++){
+			Ticket ticket = new Ticket();
+			ticketId++;
+			ticket.setTicketId(ticketId);
+			seats.add(new Seat("A", i, ticket));
+			ticket = new Ticket();
+			ticketId++;
+			ticket.setTicketId(ticketId);
+			seats.add(new Seat("B",i, ticket));
+			ticket = new Ticket();
+			ticketId++;
+			ticket.setTicketId(ticketId);
+			seats.add(new Seat("C", i,ticket));
+			ticket = new Ticket();
+			ticketId++;
+			ticket.setTicketId(ticketId);
+			seats.add(new Seat("D", i, ticket));
+			ticket = new Ticket();
+			ticketId++;
+			ticket.setTicketId(ticketId);
+			seats.add(new Seat("E", i, ticket));
+		}*/
+			
+	
+
+	public int getShowTimeId() {
+		return showTimeId;
+	}
+
+	public String getMovieTitle() {
+		return movieTitle;
+	}
+
+	public void setMovieTitle(String movieTitle) {
+		this.movieTitle = movieTitle;
+	}
+
+	public String getCinemaCode() {
+		return cinemaCode;
+	}
+
+	public void setCinemaCode(String cinemaCode) {
+		this.cinemaCode = cinemaCode;
+	}
+
+	public void setShowTimeId(int showTimeId) {
+		this.showTimeId = showTimeId;
+	}
+
+	public int getTicketId() {
+		return ticketId;
+	}
+
+	public void setTicketId(int ticketId) {
+		this.ticketId = ticketId;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public List<Seat> getSeats() {
+		return seats;
+	}
+
+	public void setSeats(List<Seat> seats) {
+		this.seats = seats;
+	};
+	
+	
+}
