@@ -46,7 +46,7 @@ public class Cinema implements Serializable {
 	
 	/**
 	 * Gets the code of this cinema
-	 * @return Code of this cinema
+	 * @return cinema code of this cinema
 	 */
 
 	public String getCinemaCode() {
@@ -55,7 +55,7 @@ public class Cinema implements Serializable {
 	
 	/**
 	 * Sets the code of this cinema
-	 * @param cinemaCode of this cinema
+	 * @param cinemaCode cinema code of this cinema
 	 */
 	 
 	public void setCinemaCode(String cinemaCode) {
@@ -73,7 +73,7 @@ public class Cinema implements Serializable {
 	
 	/**
 	 * Sets the type of this cinema
-	 * @param type of this cinema
+	 * @param cinemaType type of this cinema
 	 */
 	 
 	public void setCinemaType(String cinemaType) {
