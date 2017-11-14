@@ -1,0 +1,59 @@
+package Initialisation;
+
+import java.io.Serializable;
+
+public class TicketPrice implements Serializable{
+	private String movieType;
+	private String userAge;
+	private String day;
+	private double price;
+	private String cinemaType;
+	private String before6;
+	
+	public TicketPrice(){}
+	public TicketPrice(String movieType, String userAge, String day, double price, String cinemaType, String before6){
+		this.movieType = movieType; 
+		this.userAge = userAge; 
+		this.day = day; //extra day called ph
+		this.price = price;
+		this.cinemaType = cinemaType;
+		this.before6 = before6;
+	}
+	
+	public String getBefore6() {
+		return before6;
+	}
+	public void setBefore6(String before6) {
+		this.before6 = before6;
+	}
+	public String getCinemaType() {
+		return cinemaType;
+	}
+	public void setCinemaType(String cinemaType) {
+		this.cinemaType = cinemaType;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public String getMovieType() {
+		return movieType;
+	}
+	public void setMovieType(String movieType) {
+		this.movieType = movieType;
+	}
+	public String getUserAge() {
+		return userAge;
+	}
+	public void setUserAge(String userAge) {
+		this.userAge = userAge;
+	}
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
+	}
+}
