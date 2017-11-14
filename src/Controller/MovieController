@@ -1,0 +1,116 @@
+package Controller;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import Initialisation.Movie;
+import UI.MovieUI;
+import DataHandler.DataHandler;
+
+public class MovieController {
+	private static final String FILEPATH = DataHandler.MOVIEPATH;
+	public Scanner sc = new Scanner(System.in);
+	public static List<Movie> movieList = new ArrayList<Movie>();
+	
+
+	public static void printTitle()
+	{
+		int j;
+		movieList = (ArrayList<Movie>) DataHandler.readFilePath(FILEPATH);
+		for(j = 0; j < movieList.size();  j++) {
+			System.out.printf("%2d. %s\n",j+1 ,movieList.get(j).getTitle());
+		}
+		System.out.printf("%2d. Back\n", j+1);
+	}
+
+	public static void printDetails(int index) {
+		movieList = DataHandler.readFilePath(FILEPATH);
+		System.out.println("==========================");
+		System.out.println("Movie Details");
+		System.out.println("==========================\n");
+        MovieUI.justifyText("Cast: " + movieList.get(index).getCast());
+        System.out.println("Director: " +movieList.get(index).getDirector());
+        System.out.println("Movie Type: " + movieList.get(index).getMovieType());
+        System.out.println("Genre: " + movieList.get(index).getGenre());
+        System.out.println("Show Status: "+ movieList.get(index).getShowStatus());
+        System.out.println("Release Date: " + movieList.get(index).getReleaseDate());
+        System.out.println("Running Time: " + movieList.get(index).getRunTime() + " mins");
+        System.out.println("Distributor: " + movieList.get(index).getDistributor());
+        System.out.println("Language: " + movieList.get(index).getLanguage());
+        System.out.println();
+        System.out.println("==========================");
+        System.out.println("Synopsis\n"
+        		+ "==========================");  
+        System.out.println();
+        MovieUI.justifyText(movieList.get(index).getSynopsis());
+        System.out.println();
+        
+	}
+
+	
+	public boolean titleExist (String title) {
+		movieList = (ArrayList<Movie>) DataHandler.readFilePath(FILEPATH);
+		for (int temp = 0; temp < movieList.size(); temp ++) {
+			if (movieList.get(temp).getTitle().equals(title)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static int getMovieIndex(String title) {
+		movieList = (ArrayList<Movie>) DataHandler.readFilePath(FILEPATH);
+		for (int temp = 0; temp < movieList.size(); temp ++) {
+			if (movieList.get(temp).getTitle().equals(title)) {
+				return temp;
+			}
+		}
+		return -1;
+	}
+	public static void printAllDetails() {
+		// TODO Auto-generated method stub
+		movieList = DataHandler.readFilePath(FILEPATH);
+		System.out.println("==========================");
+		System.out.println("Movie Details");
+		System.out.println("==========================\n");
+		for(int index = 0; index < movieList.size(); index++)
+		{
+			System.out.println("Title: " + movieList.get(index).getTitle());
+		 MovieUI.justifyText("Cast: " + movieList.get(index).getCast());
+	        System.out.println("Director: " +movieList.get(index).getDirector());
+	        System.out.println("Movie Type: " + movieList.get(index).getMovieType());
+	        System.out.println("Genre: " + movieList.get(index).getGenre());
+	        System.out.println("Show Status: "+ movieList.get(index).getShowStatus());
+	        System.out.println("Release Date: " + movieList.get(index).getReleaseDate());
+	        System.out.println("Running Time: " + movieList.get(index).getRunTime() + " mins");
+	        System.out.println("Distributor: " + movieList.get(index).getDistributor());
+	        System.out.println("Language: " + movieList.get(index).getLanguage());	
+	        System.out.println();
+	        System.out.println("==========================");
+	        System.out.println("Synopsis\n"
+	        		+ "==========================");  
+	        System.out.println();
+	        MovieUI.justifyText(movieList.get(index).getSynopsis());
+	        System.out.println();
+	        System.out.println("==========================");
+	        System.out.println();
+		}
+	}
+	
+	public List<Movie> retrieveMovieList(List<Movie> mList) {
+		List<Movie> tempList = DataHandler.readFilePath(FILEPATH);
+		List<Movie> m1List = new ArrayList<Movie>();
+		if(tempList == null)
+			tempList = new ArrayList<Movie>();
+		for(Movie m: tempList){
+			for(Movie movie: mList){
+				if(movie.getTitle().equals(m.getTitle())){
+					m1List.add(m);
+				}
+			}
+		}
+		return m1List;
+	}
+	
+}
