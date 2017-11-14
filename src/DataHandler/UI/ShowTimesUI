@@ -1,0 +1,91 @@
+package UI;
+
+import java.util.Scanner;
+
+import Controller.AdminController;
+import Controller.CineplexController;
+import DataHandler.DataHandler;
+
+public class ShowTimesUI {
+	public static Scanner sc = new Scanner(System.in);
+	
+	public static AdminController admin = new AdminController();
+	
+	public static void showTimesConfiguration() {
+		int input;
+		do {
+			System.out.printf( ""
+					+ "==========================\n"
+					+ "Show Times Configuration\n"
+					+ "==========================\n"
+					+ " 1. Add show times\n"
+					+ " 2. Update show times\n"
+					+ " 3. Delete show times\n"
+					+ " 4. List show time\n"
+					+ " 5. Back\n"
+					+ "\n"
+					+ "Please make a selection:"
+					);
+
+			input = sc.nextInt();
+			sc.nextLine();
+			System.out.println();
+		} while(!DataHandler.readInt(1, 4, input));
+		switch (input) {
+		case 1: 
+				addShowTimes();				
+				break;
+		case 2:
+				//updateShowTimes();
+				break;
+		case 3:
+				//deleteShowTimes();
+				break;
+		case 4: AdminController.listbyCinema();
+				showTimesConfiguration();
+				break;
+		case 5:
+				MainConsole.adminMenu();
+				break;
+		}
+	}
+		
+
+	private static void addShowTimes() {
+		int input;
+		do {
+			System.out.printf( ""
+					+ "==========================\n"
+					+ "Add Show Times\n"
+					+ "==========================\n"
+					+ " 1. JEM Hall A\n"
+					+ " 2. JEM Hall B\n"
+					+ " 3. JEM Hall C\n"
+					+ " 4. Downtown East Hall A\n"
+					+ " 5. Downtown East Hall B\n"
+					+ " 6. Downtown East Hall C\n"
+					+ " 7. Cineleisure Orchard Hall A\n"
+					+ " 8. Cineleisure Orchard Hall B\n"
+					+ " 9. Cineleisure Orchard Hall C\n"
+					+ "10. Back\n "
+					+ "\n"
+					+ "Please make a selection:"
+					);
+			input = sc.nextInt();
+			sc.nextLine();
+			System.out.println();
+		} while(!DataHandler.readInt(1, 10, input));
+		if (input != 10) {
+			switch(input) {
+				case 1:
+				
+			}
+		}
+		else {
+			showTimesConfiguration();
+		}
+	}
+		
+		
+		
+}
