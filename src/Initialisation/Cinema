@@ -1,0 +1,32 @@
+package Initialisation;
+
+import java.io.Serializable;
+
+public class Cinema implements Serializable {
+	private String cinemaCode;
+	private String cinemaType;
+	
+	public Cinema() {
+		
+	}
+	
+	public Cinema(String cinemaCode, String cinemaType) {
+		super();
+		this.cinemaCode = cinemaCode;
+		this.cinemaType = cinemaType;
+	}
+
+	public String getCinemaCode() {
+		return cinemaCode;
+	}
+	public void setCinemaCode(String cinemaCode) {
+		this.cinemaCode = cinemaCode;
+	}
+	public String getCinemaType() {
+		return cinemaType;
+	}
+	public void setCinemaType(String cinemaType) {
+		this.cinemaType = cinemaType;
+	}
+	
+}
