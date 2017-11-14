@@ -64,10 +64,10 @@ public class Cineplex implements Serializable {
 	
 	/**
 	 * Creates a Cineplex with 
-	 * @param cineplex ID of this cineplex,
-	 * @param location of this cineplex, 
-	 * @param name of this cineplex, and
-	 * @param list of cinemas in this cineplex
+	 * @param cineplexID The cineplex ID of this cineplex,
+	 * @param location The location of this cineplex, 
+	 * @param cineplexName The name of this cineplex, and
+	 * @param cinemas The list of cinemas in this cineplex
 	 */
 	 
 	public Cineplex(int cineplexID, String location, String cineplexName, List<Cinema> cinemas) {
@@ -89,7 +89,7 @@ public class Cineplex implements Serializable {
 	
 	/**
 	 * Sets the ID of this cineplex
-	 * @param cineplexID of this cineplex
+	 * @param cineplexID The cineplex ID of this cineplex
 	 */
 
 	public void setCineplexID(int cineplexID) {
@@ -107,7 +107,7 @@ public class Cineplex implements Serializable {
 	
 	/**
 	 * Sets the location of the cineplex
-	 * @param location of this cineplex
+	 * @param location The location of this cineplex
 	 */
 	 
 	public void setLocation(String location) {
@@ -124,7 +124,7 @@ public class Cineplex implements Serializable {
 	}
 	
 	/** Sets the name of this cineplex
-	 * @param cineplexName of this cineplex
+	 * @param cineplexName The name of this cineplex
 	 */
 
 	public void setCineplexName(String cineplexName) {
@@ -141,7 +141,7 @@ public class Cineplex implements Serializable {
 	
 	/**
 	 * Sets all the cinemas in this cineplex
-	 * @param cinemas in this cineplex
+	 * @param cinemas The list of cinemas in this cineplex
 	 */
 	 
 	public void setCinemas(List<Cinema> cinemas) {
@@ -159,7 +159,7 @@ public class Cineplex implements Serializable {
 	
 	/**
 	 * Sets the movies in this cineplex
-	 * @param movies in this cineplex
+	 * @param movies The list of movies in this cineplex
 	 */
 	 
 	public void setMovies(List<Movie> movies) {
