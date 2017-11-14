@@ -6,11 +6,34 @@ import java.io.Serializable;
  * represents information of a movie
  * Contains title, ast, director, genre, release date, runtime, distributor,
  * language, synopsis, show status, number of sales and movie type
+ * @author SS3 Team 8
  */
 public class Movie implements Serializable{
+
+	/**
+	 * The title of this movie,
+	 * cast of this movie,
+	 * director of this movie,
+	 * genre of this movie,
+	 * release date of this movie,
+	 * distributor of this movie,
+	 * language of this movie,
+	 * synopsis of this movie,
+	 * type of this movie,
+	 * show status of this movie,
+	 */
+	 
 	private String title, cast, director, genre, releaseDate, distributor, language, synopsis, movieType, showStatus;
+	
+	/**
+	 * The runtime of this movie, and
+	 * the number of sales of this movie
+	 */
+	 
 	private int runTime, salesCounter = 0;
 	
+	/**
+	 * 
 	public Movie (String title, String cast, String director, String genre, String releaseDate, int runTime, 
 			String distributor, String language, String synopsis, String showStatus, String movieType) {
 				this.title = title;
