@@ -1,0 +1,111 @@
+package Initialisation;
+
+
+import java.io.Serializable;
+
+public class Movie implements Serializable{
+	private String title, cast, director, genre, releaseDate, distributor, language, synopsis, movieType, showStatus;
+	private int runTime, salesCounter = 0;
+	
+	public Movie (String title, String cast, String director, String genre, String releaseDate, int runTime, 
+			String distributor, String language, String synopsis, String showStatus, String movieType) {
+				this.title = title;
+				this.cast = cast;
+				this.director = director;
+				this.genre = genre;
+				this.releaseDate = releaseDate;
+				this.runTime = runTime;
+				this.distributor = distributor;
+				this.language = language;
+				this.synopsis = synopsis;
+				salesCounter = 0;
+				this.showStatus = showStatus;
+				this.setMovieType(movieType);
+			}
+	public Movie() {
+		salesCounter = 0;
+	}
+	
+	
+	public void incSalesCounter() {
+		salesCounter++;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getCast() {
+		return cast;
+	}
+	public void setCast(String cast) {
+		this.cast = cast;
+	}
+	public String getDirector() {
+		return director;
+	}
+	public void setDirector(String director) {
+		this.director = director;
+	}
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+	public String getDistributor() {
+		return distributor;
+	}
+	public void setDistributor(String distributor) {
+		this.distributor = distributor;
+	}
+	public String getLanguage() {
+		return language;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	public String getSynopsis() {
+		return synopsis;
+	}
+	public void setSynopsis(String synopsis) {
+		this.synopsis = synopsis;
+	}
+	public String getReleaseDate() {
+		return releaseDate;
+	}
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+	public int getRunTime() {
+		return runTime;
+	}
+	public void setRunTime(int runTime) {
+		this.runTime = runTime;
+	}
+	public String getShowStatus() {
+		return showStatus;
+	}
+	public void setShowStatus(String showStatus) {
+		this.showStatus = showStatus;
+	}
+	public void setSalesCounter(int salesCounter) {
+		this.salesCounter = salesCounter;
+	}
+	public int getSalesCounter() {
+		return salesCounter;
+	}
+
+	public String getMovieType() {
+		return movieType;
+	}
+
+	public void setMovieType(String movieType2) {
+		this.movieType = movieType2;
+	}
+	
+}
+
+
