@@ -1,6 +1,5 @@
 package Initialisation;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +7,14 @@ import java.util.List;
 import Initialisation.Movie;
 import Initialisation.ShowTime;
 
+/**
+ * Represents a cineplex in the MOBLIMA system
+ * Contains name of cineplex,
+ * cineplex ID of the cineplex,
+ * location of the cineplex,
+ * a list of cinema of the cineplex, and
+ * a list of movies of the cineplex
+ */
 public class Cineplex implements Serializable {
 	private int cineplexID;
 	private String location;
