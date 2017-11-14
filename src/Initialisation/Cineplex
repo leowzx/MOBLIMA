@@ -8,26 +8,67 @@ import Initialisation.Movie;
 import Initialisation.ShowTime;
 
 /**
- * Represents a cineplex in MOBLIMA
+ * Represents a cineplex organised by MOBLIMA
  * Contains name of cineplex,
  * cineplex ID of the cineplex,
  * location of the cineplex,
  * a list of cinema of the cineplex, and
  * a list of movies of the cineplex
  */
+ 
 public class Cineplex implements Serializable {
+	
+	/**
+	 * ID of the cineplex
+	 */
+	 
 	private int cineplexID;
+	
+	/**
+	 * Location of the cineplex
+	 */
+	 
 	private String location;
+	
+	/**
+	 * Name of the cineplex
+	 */
+	 
 	private String cineplexName;
+	
+	/**
+	 * List of cinemas in the cineplex
+	 */
+	 
 	private List<Cinema> cinemas;
+	
+	/**
+	 * List of movies in the cineplex
+	 */
+	 
 	private List<Movie> movies;
+	
+	/**
+	 * List of showtimes in the cineplex
+	 */
+	 
 	private List<ShowTime> showTime;
 	
+	/**
+	 * A constructor of the Cineplex that are invoked to create objects from the Cineplex class
+	 */
+	 
 	public Cineplex() {
-		
 	}
 	
-	
+	/**
+	 * Creates a Cineplex with 
+	 * @param cineplex ID of this cineplex,
+	 * @param location of this cineplex, 
+	 * @param name of this cineplex, and
+	 * @param list of cinemas in this cineplex
+	 */
+	 
 	public Cineplex(int cineplexID, String location, String cineplexName, List<Cinema> cinemas) {
 		this.cineplexID = cineplexID;
 		this.location = location;
@@ -36,52 +77,108 @@ public class Cineplex implements Serializable {
 
 	}
 
-
+	/**
+	 * Gets the ID of this cineplex
+	 * @return The ID of this cineplex
+	 */
 
 	public int getCineplexID() {
 		return cineplexID;
 	}
+	
+	/**
+	 * Sets the ID of this cineplex
+	 * @param cineplexID of this cineplex
+	 */
 
 	public void setCineplexID(int cineplexID) {
 		this.cineplexID = cineplexID;
 	}
-
+	
+	/**
+	 * Gets the location of this cineplex
+	 * @return location of this cineplex
+	 */
+	 
 	public String getLocation() {
 		return location;
 	}
-
+	
+	/**
+	 * Sets the location of the cineplex
+	 * @param location of this cineplex
+	 */
+	 
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
+	/**
+	 * Gets the name of this cineplex
+	 * @return name of this cineplex
+	 */
 
 	public String getCineplexName() {
 		return cineplexName;
 	}
+	
+	/** Sets the name of this cineplex
+	 * @param name of this cineplex
+	 */
 
 	public void setCineplexName(String cineplexName) {
 		this.cineplexName = cineplexName;
 	}
-
+	
+	/** Gets the cinema in this cineplex
+	 * @return all cinemas in this cineplex
+	 */
+	 
 	public List<Cinema> getCinemas() {
 		return cinemas;
 	}
-
+	
+	/**
+	 * Sets all the cinemas in this cineplex
+	 * @param all cinemas in this cineplex
+	 */
+	 
 	public void setCinemas(List<Cinema> cinemas) {
 		this.cinemas = cinemas;
 	}
-
+	
+	/**
+	 * Gets the movies in this cineplex
+	 * @return all the movies in this cineplex
+	 */
+	 
 	public List<Movie> getMovies() {
 		return movies;
 	}
-
+	
+	/**
+	 * Sets the movies in this cineplex
+	 * @param all the movies in this cineplex
+	 */
+	 
 	public void setMovies(List<Movie> movies) {
 		this.movies = movies;
 	}
-
+	
+	/**
+	 * Gets the showtimes this this cineplex
+	 * @return all the showtimes in this cineplex
+	 */
+	 
 	public List<ShowTime> getShowTime() {
 		return showTime;
 	}
-
+	
+	/**
+	 * Sets the showtimes in this cineplex
+	 * @param all the showtimes in this cineplex
+	 */
+	 
 	public void setShowTime(List<ShowTime> showTime) {
 		this.showTime = showTime;
 	}
