@@ -1,0 +1,371 @@
+package UI;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+
+import Controller.MovieController;
+import Controller.ReviewController;
+import Initialisation.Movie;
+import Initialisation.Review;
+import DataHandler.DataHandler;
+import DataHandler.ReviewHandler;
+
+public class MovieUI {
+	
+	public static Scanner sc = new Scanner(System.in);
+	
+	private static final String FILEPATH = DataHandler.MOVIEPATH;
+	public static List<Movie> movieList = DataHandler.readFilePath(FILEPATH);
+	public static MovieController movieFunction = new MovieController();
+	
+	public static void movieConfiguration() {
+		int input;
+		do{
+			//tp.init();
+			System.out.printf(""
+					+ "==========================\n"
+					+ "Movie Configuration\n"
+					+ "=========================="
+					+ "\n"
+					+ " 1. Add movie\n"
+					+ " 2. Update existing movie\n"
+					+ " 3. Delete movie\n"
+					+ " 4. List all movie\n"
+					+ " 5. Back\n"
+					+ "\n"
+					+ "Please make a selection: ");
+			
+			input = sc.nextInt();
+			sc.nextLine();
+			System.out.println();
+		} while(!DataHandler.readInt(1, 4, input));
+		switch (input) {
+		case 1: 
+				addMovie();				
+				break;
+		case 2:
+				updateMovie();
+				break;
+		case 3:
+				deleteMovie();
+				break;
+		case 4: listMovie();
+				break;
+		case 5:
+				MainConsole.adminMenu();
+		}
+	}
+
+	private static void addMovie() {
+		System.out.printf(""
+				+"==========================\n"
+				+ "Add Movie\n"
+				+ "==========================\n");
+		
+		int inp6;
+		String inp1, inp2, inp3, inp4, inp5, inp7, inp8, inp9, in10, in11;
+		boolean flag;
+		
+		System.out.println("Enter the following info:");
+		System.out.print("Title: ");
+		inp1 = sc.nextLine();
+		if (movieFunction.titleExist(inp1)) {
+			System.out.println("\nError! Movie is already listed. Choose the modify option instead.\n");
+			movieConfiguration();
+		}
+	//System.out.println(inp1);
+		System.out.print("Cast: ");
+		inp2 = sc.nextLine();
+	//System.out.println(inp2);
+		System.out.print("Director: ");
+		inp3 = sc.nextLine();
+	//System.out.println(inp3);
+		System.out.print("Movie Type (2D/3D/Premium): ");
+		in11 = sc.nextLine();
+		System.out.print("Genre: ");
+		inp4 = sc.nextLine();
+	//System.out.println(inp4);	
+		System.out.print("Show Status (Coming Soon, Preview, Now Showing): ");
+		do {
+			in10 = sc.nextLine();
+			flag = in10.equals("Coming Soon")||in10.equals("Preview")||in10.equals("Now Showing");
+			if (flag == false)
+				System.out.println("Please input only either \"Coming Soon\", \"Preview\" or \"Now Showing\": ");
+			
+		}while(!flag);
+	//System.out.println(in10);	
+		
+		System.out.print("Release Date (DD/MM/YYYY): ");
+		inp5 = sc.nextLine();
+	//System.out.println(inp5);
+		System.out.print("Running Time (mins): ");
+		inp6 = sc.nextInt();
+		sc.nextLine();
+	//System.out.println(inp6);
+		System.out.print("Distributor: ");
+		inp7 = sc.nextLine();
+	//System.out.println(inp7);
+		System.out.print("Language: ");
+		inp8 = sc.nextLine();
+	//System.out.println(inp8);
+		System.out.print("Synopsis: ");
+		inp9 = sc.nextLine();
+	//System.out.println(inp9);
+		movieList.add(new Movie(inp1, inp2, inp3, inp4, inp5, inp6, inp7, inp8, inp9, in10, in11));
+		//The newly added movie is the last element (MovieData.movieList.size() - 1)
+		System.out.println();
+		System.out.println("Movie added.");
+		System.out.println("");
+		DataHandler.writeFilePath(movieList, FILEPATH);
+		//back to previous page
+		movieConfiguration();
+	}
+
+	public static void init() {
+		movieList.add(new Movie("Secret Superstar","Aamir Khan, Zaira Wasim, Meher Vij, Raj Arjun","Advait Chandan","Drama","19/10/2017",150,"Zee","Hindi(Sub: English)","Secret Superstar traces the journey of Insiya, a 14 year old girl who dreams of becoming a famous singer and how she changes her life and the lives of everyone around her.", "Preview", "2D/3D"));
+		movieList.add(new Movie("Geostorm", "Gerard Butler, Jim Sturgess, Abbie Cornish, Daniel Wu, Ed Harris, Andy Garcia", "Dean Devlin", "Action/ Adventure", "12/10/2017", 109, "WB", "English(Sub: Chinese)", "After an unprecedented series of natural disasters threatened the planet, the world’s leaders came together to create an intricate network of satellites to control the global climate and keep everyone safe. But now, something has gone wrong—the system built to protect the Earth is attacking it, and it’s a race against the clock to uncover the real threat before a worldwide geostorm wipes out everything... and everyone along with it.", "Now Showing", "2D"));
+		movieList.add(new Movie("Marvel's Thor: Ragnarok", "Chris Hemsworth, Tom Hiddleston, Cate Blanchett, Idris Elba, Jeff Goldblum, Tessa Thompson, Karl Urban, Mark Ruffalo, Anthony Hopkins", "Taika Waititi", "Action/ Adventure", "26/10/2017", 130, "WDS", "English(Sub: Chinese)", "In Marvel Studios' \"Thor: Ragnarok\", Thor is imprisoned on the other side of the universe without his mighty hammer and finds himself in a race against time to get back to Asgard to stop Ragnarok- the destruction of his homeworld and the end of Asgardian civilization- the hands of an all-powerful new threat, the ruthless Hela. But first he must survive a deadly gladiatorial contest that pits him against his former ally and fellow Avenger- the Incredible Hulk!", "Now Showing", "2D/3D/Premium"));
+		DataHandler.writeFilePath(movieList, FILEPATH);
+	
+	}
+
+	private static void updateMovie() {
+		Scanner sc = new Scanner(System.in);
+		String input2;
+		int index, input;
+		do {
+			System.out.println("Select the movie to modify.");
+			MovieController.printTitle();
+			System.out.print("\n");
+			System.out.print("Please make a selection: ");
+			input = sc.nextInt();
+			sc.nextLine();
+		} while(!DataHandler.readInt(1, movieList.size() + 1, input));
+		index = input - 1;
+		if (input > 0 && input <= movieList.size()) {
+			do {
+				System.out.println();
+				System.out.printf("Preview\n"
+						+ "==========================\n");
+				MovieController.printDetails(index);
+				System.out.println("Which of the following attribute would you like to modify?");
+				System.out.println(" 1. Title");
+				System.out.println(" 2. Cast");
+				System.out.println(" 3. Director");
+				System.out.println(" 4. Movie Type");
+				System.out.println(" 5. Genre");
+				System.out.println(" 6. Show Status");
+				System.out.println(" 7. Release Date");
+				System.out.println(" 8. Running Time");
+				System.out.println(" 9. Distributor");
+				System.out.println("10. Language");
+				System.out.println("11. Synopsis");
+				System.out.println("12. Back");
+				System.out.println("");
+				System.out.print("Please make a selection: ");
+				input = sc.nextInt();
+				sc.nextLine();
+				System.out.println("");
+			}while (!DataHandler.readInt(1, 12, input));
+			switch (input) {	
+				case 1:
+					System.out.print("Enter new title: ");
+					input2 = sc.nextLine();
+					if (movieFunction.titleExist(input2)) {
+						System.out.println("\nError! Movie title already exist.\n");
+						movieConfiguration();
+					}
+					movieList.get(index).setTitle(input2);
+					break;
+				case 2:
+					System.out.print("Enter new cast: ");
+					movieList.get(index).setTitle(sc.nextLine());
+					break;
+	
+				case 3:
+					System.out.print("Enter new director: ");
+					movieList.get(index).setDirector(sc.nextLine());
+					break;
+				case 4:
+					System.out.print("Enter new director: ");
+					movieList.get(index).setDirector(sc.nextLine());
+					break;
+					
+				case 5:
+					System.out.print("Enter new genre: ");
+					movieList.get(index).setGenre(sc.nextLine());
+					break;
+				case 6:
+					System.out.print("Enter new show status (Coming Soon, Preview, Now Showing): ");
+					movieList.get(index).setShowStatus(sc.nextLine());
+					break;
+				case 7:
+					System.out.print("Enter new release date (DD/MM/YYYY): ");
+					movieList.get(index).setReleaseDate(sc.nextLine());
+					break;
+				case 8:
+					System.out.print("Enter new running time (mins): ");
+					movieList.get(index).setRunTime(sc.nextInt());
+					break;
+				case 9:
+					System.out.print("Enter new distributor: ");
+					movieList.get(index).setDistributor(sc.nextLine());
+					break;
+				case 10:
+					System.out.print("Enter new language: ");
+					movieList.get(index).setLanguage(sc.nextLine());
+					break;
+				case 11:
+					System.out.print("Enter new synopsis: ");
+					movieList.get(index).setSynopsis(sc.nextLine());
+					break;
+				case 12:
+					movieConfiguration();
+					return;
+					
+			}
+			System.out.println();
+			System.out.println("Attributes modified");
+			System.out.println();
+			DataHandler.writeFilePath(movieList, FILEPATH);
+			movieConfiguration();
+		}
+		movieConfiguration();
+	}
+
+	private static void deleteMovie() {
+		System.out.println();
+		System.out.printf("Delete Movie\n"
+				+ "==========================\n");
+		int index, input;
+		do {
+			System.out.println("Select the movie to delete.");
+			System.out.println("");
+			MovieController.printTitle();
+			System.out.print("\n");
+			System.out.print("Please make a selection: ");
+			input = sc.nextInt();
+			sc.nextLine();
+		} while(!DataHandler.readInt(1, movieList.size() + 1, input));
+		index = input - 1;
+		if (input != movieList.size() + 1) {
+			HashMap<String, List<Review>> reviewsMap = new HashMap<String, List<Review>>();
+			reviewsMap = ReviewHandler.readFilePath(ReviewHandler.FILEPATH);
+			if (reviewsMap.containsKey(movieList.get(index).getTitle())) {
+				reviewsMap.remove(movieList.get(index).getTitle());
+				ReviewHandler.writeFilePath(reviewsMap, ReviewHandler.FILEPATH);
+			}
+			movieList.remove(index);
+			DataHandler.writeFilePath(movieList, FILEPATH);
+			System.out.println();
+			System.out.println("Movie deleted\n");
+			movieConfiguration();
+		}
+		else {
+			movieConfiguration();
+		}
+	}
+
+	public static void browseMovie() {
+		int input;
+		int movieIndex;
+		// rmb to change to show only those that is not end of showing
+		do {
+			System.out.printf( ""
+					+ "==========================\n"
+					+ "Browse Movie\n"
+					+ "==========================\n");
+			MovieController.printTitle();
+			System.out.println();
+			System.out.print("Please make a selection: ");
+			input = sc.nextInt();
+			sc.nextLine();
+			System.out.println();
+		} while(!DataHandler.readInt(1, movieList.size()+1, input));
+		if (input != movieList.size() + 1) {
+			movieSelection(input);
+		}
+		else {
+			MainConsole._1();
+		}
+	}
+	
+	private static void movieSelection(int input) {
+		int movieIndex;
+		movieIndex = input - 1;
+		do {	
+			System.out.println("==========================");
+			System.out.println(movieList.get(movieIndex).getTitle());
+			System.out.println("==========================");
+			System.out.printf(""
+					+ " 1. Movie information\n"
+					+ " 2. Book tickets\n"
+					+ " 3. Add review\n"
+					+ " 4. Show reviews\n"
+					+ " 5. Back\n");
+			System.out.println();
+			System.out.print("Please make a selection: ");
+			input = sc.nextInt();
+			sc.nextLine();
+			System.out.println();
+		}while(!DataHandler.readInt(1, 5, input));
+		switch (input) {
+			case 1: 
+				MovieController.printDetails(movieIndex);
+				movieSelection(movieIndex + 1);
+				return;
+			case 2:
+				break;
+			case 3:
+				ReviewMain.addReview(movieList.get(movieIndex).getTitle());
+				movieSelection(movieIndex + 1);
+				break;
+			case 4:
+				ReviewController.printAllReview(movieList.get(movieIndex).getTitle());
+				movieSelection(movieIndex + 1);
+				break;
+			case 5:
+				browseMovie();
+				return;
+			
+		}
+	}
+	//Taken from  https://stackoverflow.com/questions/8524979/justify-text-in-java
+	public static void justifyText (String text) {
+		int STR_LENGTH = 100;
+		int end=STR_LENGTH, extraSpacesPerWord=0, spillOverSpace=0;
+		String[] words;
+		while(end < text.length()) {
+
+	        if(text.charAt(STR_LENGTH) == ' ') {
+	            // Technically, this block is redundant
+	            System.out.println (text.substring(0, STR_LENGTH));
+	            text = text.substring(STR_LENGTH);
+	            continue;
+	        }
+
+	        end = text.lastIndexOf(" ", STR_LENGTH);
+	        words = text.substring(0, end).split(" ");
+	        extraSpacesPerWord = (STR_LENGTH - end) / words.length;
+	        spillOverSpace = STR_LENGTH - end + (extraSpacesPerWord * words.length);
+
+	        for(String word: words) {
+	            System.out.print(word + " ");
+	            System.out.print((extraSpacesPerWord-- > 0) ? " ": "");
+	            System.out.print((spillOverSpace-- > 0) ? " ": "");
+	        }
+	        System.out.print("\n");
+	        text = text.substring(end+1);
+	    }
+	System.out.println(text);
+	}
+	
+	public static void listMovie()
+	{
+		MovieController.printAllDetails();
+	
+	}
+	
+}
