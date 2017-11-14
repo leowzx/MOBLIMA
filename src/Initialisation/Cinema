@@ -3,35 +3,79 @@ package Initialisation;
 import java.io.Serializable;
 
 /**
- * Represents a cinema in the cineplex
- * Contains information of name of this cinema,
- * cinema code of this cinema, and
- * type of this cinema
+ * Represents a Cinema in the cineplex
+ * Contains information of name of this Cinema,
+ * cinema code of this Cinema, and
+ * type of this Cinema
+ * @author SS3 Team 8
  */
   
 public class Cinema implements Serializable {
+
+	/**
+	 * The cinema code of the cinema
+	 */
+	 
 	private String cinemaCode;
+	
+	/**
+	 * The cinema type of the cinema
+	 */
+	 
 	private String cinemaType;
 	
-	public Cinema() {
-		
+	/**
+	 * A contructor of the Cinema itself that are invoked to create objects from the class Cinema
+	 */
+	 
+	public Cinema() {	
 	}
 	
+	/**
+	 * Create a new Cinema with given cinema code and cinema type
+	 * @param cinemaCode Cinema code of this cinema
+	 * @param cinemaType Cinema type of this cinema
+	 * @param 
+	 */
+	 
 	public Cinema(String cinemaCode, String cinemaType) {
 		super();
 		this.cinemaCode = cinemaCode;
 		this.cinemaType = cinemaType;
 	}
+	
+	/**
+	 * Gets the code of this cinema
+	 * @return Code of this cinema
+	 */
 
 	public String getCinemaCode() {
 		return cinemaCode;
 	}
+	
+	/**
+	 * Sets the code of this cinema
+	 * @param cinemaCode of this cinema
+	 */
+	 
 	public void setCinemaCode(String cinemaCode) {
 		this.cinemaCode = cinemaCode;
 	}
+	
+	/**
+	 * Gets the type of this cinema
+	 * @return the type of this cinema
+	 */
+	 
 	public String getCinemaType() {
 		return cinemaType;
 	}
+	
+	/**
+	 * Sets the type of this cinema
+	 * @param type of this cinema
+	 */
+	 
 	public void setCinemaType(String cinemaType) {
 		this.cinemaType = cinemaType;
 	}
