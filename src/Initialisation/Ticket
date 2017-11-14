@@ -1,0 +1,33 @@
+package Initialisation;
+
+import java.io.Serializable;
+
+public class Ticket implements Serializable{
+	private String userType;
+	private int ticketId;
+	
+	public Ticket(){};
+	
+	public Ticket(int ticketId,String userType){
+		this.ticketId = ticketId;
+		this.userType = userType;
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public int getTicketId() {
+		return ticketId;
+	}
+
+	public void setTicketId(int ticketId) {
+		this.ticketId = ticketId;
+	}
+}
+
+
